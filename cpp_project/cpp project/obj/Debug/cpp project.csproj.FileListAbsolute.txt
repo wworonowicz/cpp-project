@@ -1,0 +1,15 @@
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project.csprojAssemblyReference.cache
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\MainWindow.g.cs
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\App.g.cs
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project_MarkupCompile.cache
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project_MarkupCompile.lref
+C:\Users\wikto\source\repos\cpp project\cpp project\bin\Debug\cpp project.exe.config
+C:\Users\wikto\source\repos\cpp project\cpp project\bin\Debug\cpp project.exe
+C:\Users\wikto\source\repos\cpp project\cpp project\bin\Debug\cpp project.pdb
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\MainWindow.baml
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project.g.resources
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp_project.Properties.Resources.resources
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project.csproj.GenerateResource.cache
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project.csproj.CoreCompileInputs.cache
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project.exe
+C:\Users\wikto\source\repos\cpp project\cpp project\obj\Debug\cpp project.pdb
