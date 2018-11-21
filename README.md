@@ -12,7 +12,7 @@ Aplikacja bazodanowa biblioteki
 3. Założenia:
 >a) Profil administratora oraz użytkownika
 
->b) Logowanie
+>b) Logowanie, rejestracja
 
 >c) Baza książek biblioteki (z możliwością dodania nowych książek po zatwierdzeniu administratora) 
 
