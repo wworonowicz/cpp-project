@@ -1,0 +1,6 @@
+Stworzenie pierwszej aplikacji, zaznajomienie się z narzędziami, którymi dysponuję.
+Stworzenie profilu logowania i rejestracji użytkowników (ulegnie on jeszcze modyfikacji)
+Sprecyzowanie bazy danych którą należy utworzyć.
+baza dlanych, w której będą:
+- użytkownicy (Imię, Nazwisko, numer albumu oraz email)
+- książki (Tytuł, Autor, gatunek - do wyboru spośród podanych)
