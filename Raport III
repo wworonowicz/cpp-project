@@ -1,0 +1,7 @@
+< Zmieniłam framework na webowy, aby rozwiązanie mogło być dostępne dla wszystkich w platformach (przez to musiałam nauczyć się rozróżniać projekty, 
+które są do dyspozycji)
+< Stworzenie podstawowej rejestracji użytkowników (zostanie ona rozszerzona do podawania swoich szczegółowych danych tj imię, nazwisko, numer albumu)
+< Wszyscy użytkownicy są zapisywani w bazie danych SQL
+< Autoryzacja użytkowników, po zalogowaniu użytkownik zostaje zapamiętany i może się wylogować
+< Dodatkowo zaczęłam tworzyć zarządzanie użytkownikami - potwierdzenie, odrzucenie, edycja z poziomu administratora
+< Uczyłam się także tworzyć modele, które przydadzą mi się do tworzenia książek
