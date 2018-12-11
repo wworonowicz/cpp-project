@@ -1,0 +1,8 @@
+<Stworzyłam bazę Użytkowników (inną niż podczas logowania), ponieważ chcę aby osoby zalogowane mogły widzieć bazę książek,
+natomiast osoby które dodadzą swoje dane tj właściwie zarejestrują się w bibliotece, będą mogły je wypożyczyć, edytować itp.
+<Na stronie głównej, po naciśnięciu na napis "Biblioteka" możemy już stworzyć użytkownika - podajemy swoje imię, nazwisko oraz datę urodzenia.
+<Na tę chwilę można tam tworzyć kolejnych użytkowników, edytować ich dane oraz usuwać - w przyszłości będzie można jedynie dodawać użytkowników
+<Stworzyłam to za pomocą kontrolerów i modeli strony MVC
+<Dużym problemem były pakiety, które należało zainstalować- wiele z nich nie jest kompatybilnych przez co otrzymywałam dużo błędów
+<Zainstalowałam wiele pakietów o różnych wersjach, które współgrają ze sobą na tym poziomie projektu
+<Zaczęłam tworzyć profil administratora, który będzie jako jedyny widział użytkowników i mógł ich akceptować/odrzucać/edytować
