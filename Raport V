@@ -1,0 +1,10 @@
+<Ulepszyłam rejestrację użytkownika
+
+<W tym momencie po założeniu konta jesteśmy przenoszeni do strony, na której należy dodać użytkownika tj podać swoje dane potrzebne w bibliotece -
+nie ma możliwości ominięcia tego (nie można jedynie się zarejestrować, bez podania imienia, nazwiska itd)
+
+<Istnieje podział na administratora oraz użytkownika: Admin ma dwie specyfikacje -admin oraz verified, natomiast użytkownik - verified.
+Dzięki temu dla tych dwóch grup będę w stanie zmieniać widoki, przydzielać różne możliwości.
+
+<W następnym kroku admin będzie zatwierdzał, odrzucał oraz edytował dane użytkowników.
+
