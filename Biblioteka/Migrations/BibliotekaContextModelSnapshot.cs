@@ -19,6 +19,25 @@ namespace Biblioteka.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Biblioteka.Models.Books", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Author");
+
+                    b.Property<string>("Genre");
+
+                    b.Property<DateTime>("ReleaseDate");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Books");
+                });
+
             modelBuilder.Entity("Biblioteka.Models.Uzytkownicy", b =>
                 {
                     b.Property<int>("ID")
@@ -30,6 +49,8 @@ namespace Biblioteka.Migrations
                     b.Property<string>("Imie");
 
                     b.Property<string>("Nazwisko");
+
+                    b.Property<bool>("Verified");
 
                     b.HasKey("ID");
 

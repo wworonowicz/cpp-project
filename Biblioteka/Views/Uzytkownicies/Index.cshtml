@@ -37,9 +37,20 @@
                 @Html.DisplayFor(modelItem => item.DataUro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                @if (item.Verified)
+                {
+                    <span> Approved </span> }
+                else
+                {
+                    <span> Pending </span> }
+            </td>
+            <td>
+                @if (!item.Verified)
+                {<a asp-action="Verify" asp-route-id="@item.ID">Verify |</a>}
+                @if (!item.Verified)
+                {<a asp-action="Reject" asp-route-id="@item.ID">Reject |</a>}
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit |</a>
+                <a asp-action="Reject" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

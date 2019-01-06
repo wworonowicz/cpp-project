@@ -13,6 +13,7 @@ using Biblioteka.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Biblioteka.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Biblioteka
 {
@@ -41,17 +42,42 @@ namespace Biblioteka
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+            })
+                        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+        .AddRazorPagesOptions(options =>
+        {
+            options.AllowAreas = true;
+            options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+            options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+        });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            services.AddSingleton<IEmailSender, EmailSender>();
+
 
             services.AddDbContext<BibliotekaContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BibliotekaContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -69,13 +95,38 @@ namespace Biblioteka
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+            app.UseIdentity();
+            if (!roleManager.RoleExistsAsync("Admin").GetAwaiter().GetResult())
+            {
+                var create = roleManager.CreateAsync(new IdentityRole("Admin")).GetAwaiter().GetResult();
 
+                if (!create.Succeeded)
+                {
+                    throw new Exception("Failed to create role");
+                }
+            } 
+            if (!roleManager.RoleExistsAsync("Verified").GetAwaiter().GetResult())
+            {
+                var create = roleManager.CreateAsync(new IdentityRole("Verified")).GetAwaiter().GetResult();
+                if (!create.Succeeded)
+                {
+                    throw new Exception("Failed to create role");
+                }
+            }
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+    }
+
+    public class EmailSender : IEmailSender
+    {
+        public Task SendEmailAsync(string email, string subject, string message)
+        {
+            return Task.CompletedTask;
         }
     }
 }

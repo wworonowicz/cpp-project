@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Biblioteka.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Biblioteka.Controllers
 {
@@ -17,9 +18,18 @@ namespace Biblioteka.Controllers
     {
         private readonly BibliotekaContext _context;
 
-        public UzytkowniciesController(BibliotekaContext context)
+        private readonly RoleManager<IdentityRole>
+            _roleManager;
+        private readonly UserManager<IdentityUser>
+            _userManager;
+
+       
+
+        public UzytkowniciesController(BibliotekaContext context, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _roleManager = roleManager;
+            _userManager = userManager;
         }
 
         // GET: Uzytkownicies
@@ -49,8 +59,13 @@ namespace Biblioteka.Controllers
         // GET: Uzytkownicies/Create
         public IActionResult Create()
         {
+            var user = GetCurrentUserAsync().GetAwaiter().GetResult();
+            ViewBag.roles = _userManager.GetRolesAsync(user).GetAwaiter().GetResult();
             return View();
         }
+
+        private Task<IdentityUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
 
         // POST: Uzytkownicies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -62,6 +77,28 @@ namespace Biblioteka.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(uzytkownicy);
+                //var roleName = "Verified";
+                //IdentityResult roleResult;
+                //var roleExist = await _roleManager.RoleExistsAsync(roleName);
+                //if (!roleExist)
+                //{
+                //    roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
+                //}
+                //var user = await _userManager.GetUserAsync(HttpContext.User);
+                //await _userManager.AddToRoleAsync(user, roleName);
+                var user = await GetCurrentUserAsync();
+
+                var verifiedRole = await _roleManager.FindByNameAsync("Verified");
+                if (verifiedRole == null)
+                {
+                    verifiedRole = new IdentityRole("Verified");
+                    await _roleManager.CreateAsync(verifiedRole);
+                }
+
+                if (!await _userManager.IsInRoleAsync(user, verifiedRole.Name))
+                {
+                    await _userManager.AddToRoleAsync(user, verifiedRole.Name);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -81,15 +118,33 @@ namespace Biblioteka.Controllers
             {
                 return NotFound();
             }
-            return View(uzytkownicy);
+            ViewBag.isAdmin = User.IsInRole("Admin");
+            return View();
         }
+
+        public async Task<IActionResult> Verify(int id)
+        {
+            if (User.IsInRole("Admin")) {
+                var uzytkownicy = await _context.Uzytkownicy.FindAsync(id);
+                if (uzytkownicy == null)
+                {
+                    return NotFound();
+                }
+                uzytkownicy.Verified = true;
+                return await this.Edit(id, uzytkownicy);
+            } else
+            {
+                return Unauthorized();
+            }
+        }
+
 
         // POST: Uzytkownicies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Imie,Nazwisko,DataUro")] Uzytkownicy uzytkownicy)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Imie,Nazwisko,DataUro, Verified")] Uzytkownicy uzytkownicy)
         {
             if (id != uzytkownicy.ID)
             {
@@ -135,6 +190,17 @@ namespace Biblioteka.Controllers
             }
 
             return View(uzytkownicy);
+        }
+        public async Task<IActionResult> Reject(int id)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return await this.DeleteConfirmed(id);
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
 
         // POST: Uzytkownicies/Delete/5

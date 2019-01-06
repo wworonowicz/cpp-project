@@ -15,5 +15,6 @@ namespace Biblioteka.Models
         [Display(Name = "DataUrodzenia")]
         [DataType(DataType.Date)]
         public DateTime DataUro { get; set; }
+        public bool Verified { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Biblioteka.Models;
 
 namespace Biblioteka.Models
 {
@@ -19,5 +20,7 @@ namespace Biblioteka.Models
         {
             modelBuilder.Entity<Uzytkownicy>().ToTable("Course");
         }
+
+        public DbSet<Biblioteka.Models.Books> Books { get; set; }
     }
 }
