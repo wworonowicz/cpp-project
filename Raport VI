@@ -1,0 +1,10 @@
+< Nauczyłam się przydzielać różne widoki adminowi oraz użytkownikowi - dzięki temu użytkownicy nie będą mieli wglądu do bazy użytkowników,
+a w przyszłości jedynie do bazy książek, natomiast admini będą mieli spis użytkowników, książek oraz wypożyczeń tj przypisanie książki do użytkownika.
+
+<Admin zatwierdza nowych użytkowników, może ich także odrzucić co jest równoznaczne z usunięciem z bazy oraz edytować ich dane.
+Jeszcze użytkownik ma podobny widok do admina, natomiast kiedy on próbuje zatwierdzić lub odrzucić, pojawia się alert.
+
+<Stworzyłam kontroler i model książek oraz połączyłam to z bazą danych.
+
+<Następnie podobnie jak w przypadku użytkowników- stworzę dodawanie ksiązek (mam nadzieję że uda mi się zastosować tagi przy gatunkach)
+oraz uporządkuję wszystkie widoki i możliwości dla admina i użytkownika, z niektórymi sobie jeszcze nie poradziłam.
