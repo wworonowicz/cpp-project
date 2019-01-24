@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static Biblioteka.Models.BibliotekaContext;
 
 namespace Biblioteka.Models
 {
@@ -33,5 +34,7 @@ namespace Biblioteka.Models
         public ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public ICollection<AspNetUserRoles> AspNetUserRoles { get; set; }
         public ICollection<AspNetUserTokens> AspNetUserTokens { get; set; }
+
+        public List<Wypozyczenie> Wypozyczenie { get; set; }
     }
 }

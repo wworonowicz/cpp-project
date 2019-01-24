@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20181211223750_Initial.cs" />
+    <Compile Remove="Migrations\20181211223750_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20181219231428_Books.cs" />
+    <Compile Remove="Migrations\20181219231428_Books.Designer.cs" />
+    <Compile Remove="Migrations\20190123220856_Wypozycne.cs" />
+    <Compile Remove="Migrations\20190123220856_Wypozycne.Designer.cs" />
+    <Compile Remove="Migrations\20190123231449_qdqdqw.cs" />
+    <Compile Remove="Migrations\20190123231449_qdqdqw.Designer.cs" />
     <Compile Remove="Models\Class.cs" />
   </ItemGroup>
 

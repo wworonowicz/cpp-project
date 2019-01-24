@@ -35,7 +35,11 @@ namespace Biblioteka.Controllers
         // GET: Uzytkownicies
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Uzytkownicy.ToListAsync());
+            if (User.IsInRole("Admin"))
+            {
+                return View(await _context.Uzytkownicy.ToListAsync());
+            }
+            return RedirectToAction("Index", "Books");
         }
 
         // GET: Uzytkownicies/Details/5
