@@ -1,0 +1,10 @@
+<Na stronie każdy użytkownik (jeśli jest verified) może stworzyć nową pozycję książki, której widok jest podobny do widoku użytkownika.
+
+<Uporządkowałam poszczególne widoki administratora oraz użytkownika.
+W tej chwili użytkownik po zalogowaniu nie widzi już listy innych użytkowników, w tym miejscu jest baza książek.
+Natomiast administrator jest w stanie z poziomu strony zobaczyć wszystkie te dane.
+
+<Połączyłam rejestrację z użytkownikiem, to znaczy, że konkretne dane użytkownika są przypisane do jego emaila oraz id,
+który jest tworzony w bazie podczas rejestracji. Zatem po zarejestrowaniu użytkownik może tylko raz założyć swój profil 
+oraz ma możliwość do edycji tylko swoich danych. 
+Dzięki temu dane użytkownika będę mogła wykorzystać przy wypożyczaniu książek.
