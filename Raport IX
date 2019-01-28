@@ -1,0 +1,8 @@
+<Wyeliminowałam błędy w postaci dostania się do bazy książek bez rejestracji.
+Teraz nie ma możliwości przejścia do tej bazy bez zarejestrowania/zalogowania się, 
+taki użytkownik zostanie przeniesiony do strony logowania.
+
+<Każda pozycja nowo powstałej książki musi zostać zweryfikowana przez administratora
+zanim zostanie pokazana w bazie użytkowników. Użytkownik nie ma możliwości edytowania czy też usunięcia pozycji książki,
+jedynie w szczegółach dotyczących książki jest w stanie zobaczyć na którym miejscu w kolejce znajduje się.
+Zarządzanie szczegółami książek jest możliwe z pozycji administratora.
