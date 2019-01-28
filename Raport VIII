@@ -1,0 +1,8 @@
+<Zmodyfikowałam wygląd strony startowej oraz zakładek, przesuwające się zdjęcia dotyczą biblioteki
+Pod spodem jest samouczek, w którym zawarłam instrukcje obsługi strony
+
+<Istniejące książki każdy użytkownik jest w stanie wypożyczyć
+Po kliknięciu tego przycisku, email użytkownika trafia do "Details", gdzie administrator widzi kto wypożyczył książkę
+
+<Powstaje tzw kolejka, w której w kolejności wypisane są emaile użytkowników - 
+(na dany email może zostać wtedy wysłane Hasło potrzebne przy odbiorze książki)
